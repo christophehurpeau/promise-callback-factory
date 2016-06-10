@@ -1,6 +1,6 @@
 {
   "name": "promise-callback-factory",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "create promise with node-style callback",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
