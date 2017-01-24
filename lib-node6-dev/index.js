@@ -1,10 +1,16 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.resolveFromCallback = resolveFromCallback;
 exports.default = promiseCallback;
+
+var _tcombForked = require('tcomb-forked');
+
+var _tcombForked2 = _interopRequireDefault(_tcombForked);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * Creates a callback that resolve or reject a promise
@@ -15,16 +21,16 @@ exports.default = promiseCallback;
  * @return {Function}
  */
 function resolveFromCallback(resolve, reject) {
-    return function (err, result) {
-        if (err) {
-            if (typeof err === 'string') {
-                err = new Error(err);
-            }
+  return function (err, result) {
+    if (err) {
+      if (typeof err === 'string') {
+        err = new Error(err);
+      }
 
-            return reject(err);
-        }
-        resolve(result);
-    };
+      return reject(err);
+    }
+    resolve(result);
+  };
 }
 
 /**
@@ -43,71 +49,24 @@ function resolveFromCallback(resolve, reject) {
  * @return {Promise}
  */
 function promiseCallback(callback) {
-    if (!(typeof callback === 'function')) {
-        throw new TypeError('Value of argument "callback" violates contract.\n\nExpected:\nFunction\n\nGot:\n' + _inspect(callback));
-    }
+  _assert(callback, _tcombForked2.default.Function, 'callback');
 
+  return _assert(function () {
     return new Promise((resolve, reject) => {
-        callback(resolveFromCallback(resolve, reject));
+      callback(resolveFromCallback(resolve, reject));
     });
+  }.apply(this, arguments), _tcombForked2.default.Promise, 'return value');
 }
 
-function _inspect(input, depth) {
-    const maxDepth = 4;
-    const maxKeys = 15;
-
-    if (depth === undefined) {
-        depth = 0;
+function _assert(x, type, name) {
+  if (_tcombForked2.default.isType(type) && type.meta.kind !== 'struct') {
+    if (!type.is(x)) {
+      type(x, [name + ': ' + _tcombForked2.default.getTypeName(type)]);
     }
+  } else if (!(x instanceof type)) {
+    _tcombForked2.default.fail('Invalid value ' + _tcombForked2.default.stringify(x) + ' supplied to ' + name + ' (expected a ' + _tcombForked2.default.getTypeName(type) + ')');
+  }
 
-    depth += 1;
-
-    if (input === null) {
-        return 'null';
-    } else if (input === undefined) {
-        return 'void';
-    } else if (typeof input === 'string' || typeof input === 'number' || typeof input === 'boolean') {
-        return typeof input;
-    } else if (Array.isArray(input)) {
-        if (input.length > 0) {
-            if (depth > maxDepth) return '[...]';
-
-            const first = _inspect(input[0], depth);
-
-            if (input.every(item => _inspect(item, depth) === first)) {
-                return first.trim() + '[]';
-            } else {
-                return '[' + input.slice(0, maxKeys).map(item => _inspect(item, depth)).join(', ') + (input.length >= maxKeys ? ', ...' : '') + ']';
-            }
-        } else {
-            return 'Array';
-        }
-    } else {
-        const keys = Object.keys(input);
-
-        if (!keys.length) {
-            if (input.constructor && input.constructor.name && input.constructor.name !== 'Object') {
-                return input.constructor.name;
-            } else {
-                return 'Object';
-            }
-        }
-
-        if (depth > maxDepth) return '{...}';
-        const indent = '  '.repeat(depth - 1);
-        let entries = keys.slice(0, maxKeys).map(key => {
-            return (/^([A-Z_$][A-Z0-9_$]*)$/i.test(key) ? key : JSON.stringify(key)) + ': ' + _inspect(input[key], depth) + ';';
-        }).join('\n  ' + indent);
-
-        if (keys.length >= maxKeys) {
-            entries += '\n  ' + indent + '...';
-        }
-
-        if (input.constructor && input.constructor.name && input.constructor.name !== 'Object') {
-            return input.constructor.name + ' {\n  ' + indent + entries + '\n' + indent + '}';
-        } else {
-            return '{\n  ' + indent + entries + '\n' + indent + '}';
-        }
-    }
+  return x;
 }
 //# sourceMappingURL=index.js.map

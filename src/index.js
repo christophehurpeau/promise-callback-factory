@@ -8,16 +8,16 @@
  * @return {Function}
  */
 export function resolveFromCallback(resolve, reject) {
-    return function (err, result) {
-        if (err) {
-            if (typeof err === 'string') {
-                err = new Error(err);
-            }
+  return function (err, result) {
+    if (err) {
+      if (typeof err === 'string') {
+        err = new Error(err);
+      }
 
-            return reject(err);
-        }
-        resolve(result);
-    };
+      return reject(err);
+    }
+    resolve(result);
+  };
 }
 
 /**
@@ -36,7 +36,7 @@ export function resolveFromCallback(resolve, reject) {
  * @return {Promise}
  */
 export default function promiseCallback(callback: Function): Promise {
-    return new Promise((resolve, reject) => {
-        callback(resolveFromCallback(resolve, reject));
-    });
+  return new Promise((resolve, reject) => {
+    callback(resolveFromCallback(resolve, reject));
+  });
 }

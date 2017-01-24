@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.resolveFromCallback = resolveFromCallback;
 exports.default = promiseCallback;
@@ -15,16 +15,16 @@ exports.default = promiseCallback;
  * @return {Function}
  */
 function resolveFromCallback(resolve, reject) {
-    return function (err, result) {
-        if (err) {
-            if (typeof err === 'string') {
-                err = new Error(err);
-            }
+  return function (err, result) {
+    if (err) {
+      if (typeof err === 'string') {
+        err = new Error(err);
+      }
 
-            return reject(err);
-        }
-        resolve(result);
-    };
+      return reject(err);
+    }
+    resolve(result);
+  };
 }
 
 /**
@@ -43,8 +43,8 @@ function resolveFromCallback(resolve, reject) {
  * @return {Promise}
  */
 function promiseCallback(callback) {
-    return new Promise((resolve, reject) => {
-        callback(resolveFromCallback(resolve, reject));
-    });
+  return new Promise((resolve, reject) => {
+    callback(resolveFromCallback(resolve, reject));
+  });
 }
 //# sourceMappingURL=index.js.map

@@ -1,10 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.resolveFromCallback = resolveFromCallback;
-exports.default = promiseCallback;
 
 /**
  * Creates a callback that resolve or reject a promise
@@ -14,17 +7,17 @@ exports.default = promiseCallback;
  * @param {Function} reject reject function of the promise
  * @return {Function}
  */
-function resolveFromCallback(resolve, reject) {
-    return function (err, result) {
-        if (err) {
-            if (typeof err === 'string') {
-                err = new Error(err);
-            }
+export function resolveFromCallback(resolve, reject) {
+  return function (err, result) {
+    if (err) {
+      if (typeof err === 'string') {
+        err = new Error(err);
+      }
 
-            return reject(err);
-        }
-        resolve(result);
-    };
+      return reject(err);
+    }
+    resolve(result);
+  };
 }
 
 /**
@@ -42,9 +35,9 @@ function resolveFromCallback(resolve, reject) {
  * @param {Function} callback callback((done) => {})
  * @return {Promise}
  */
-function promiseCallback(callback) {
-    return new Promise(function (resolve, reject) {
-        callback(resolveFromCallback(resolve, reject));
-    });
+export default function promiseCallback(callback) {
+  return new Promise(function (resolve, reject) {
+    callback(resolveFromCallback(resolve, reject));
+  });
 }
 //# sourceMappingURL=index.js.map

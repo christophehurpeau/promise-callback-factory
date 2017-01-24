@@ -1,9 +1,9 @@
-# promise-callback-factory [![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# promise-callback-factory [![NPM version][npm-image]][npm-url]
 
 create promise with node-style callback
 
- [![Dependency Status][daviddm-image]][daviddm-url]
-
+[![Dependency ci Status][dependencyci-image]][dependencyci-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
 
 ## Install
 
@@ -11,19 +11,20 @@ create promise with node-style callback
 npm install --save promise-callback-factory
 ```
 
-## API
-
-http://christophehurpeau.github.io/promise-callback-factory/docs
-
 ## Usage
 
 ```js
-import promiseCallbackFactory from 'promise-callback-factory';
+import promiseCallback from 'promise-callback-factory';
 
-console.log(promiseCallbackFactory);
+promiseCallback(done => fs.readFile('./myFile.txt', done))
+  .then((txtContentBuffer) => {
+    console.log(txtContentBuffer.toString());
+  });
 ```
 
 [npm-image]: https://img.shields.io/npm/v/promise-callback-factory.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/promise-callback-factory
-[daviddm-image]: https://david-dm.org/christophehurpeau/promise-callback-factory.svg?theme=shields.io
+[daviddm-image]: https://david-dm.org/christophehurpeau/promise-callback-factory.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/christophehurpeau/promise-callback-factory
+[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/promise-callback-factory/badge?style=flat-square
+[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/promise-callback-factory
