@@ -1,3 +1,9 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/christophehurpeau/promise-callback-factory/compare/v1.0.0...v1.1.0) (2017-01-24)
+
+pob refactor and readme
+
+
 ### v1.0.0
 
 - [`8121ccd`](https://github.com/christophehurpeau/promise-callback-factory/commit/8121ccd2ae6cc49faea2ef34190b3b75b0107bd4) first commit (Christophe Hurpeau)
