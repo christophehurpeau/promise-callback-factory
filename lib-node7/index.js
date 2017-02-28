@@ -6,12 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.resolveFromCallback = resolveFromCallback;
 exports.default = promiseCallback;
 
-var _flowRuntime = require('flow-runtime');
-
-var _flowRuntime2 = _interopRequireDefault(_flowRuntime);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 /**
  * Creates a callback that resolve or reject a promise
  * according to the default callback convention in node: (err, result)
@@ -49,14 +43,8 @@ function resolveFromCallback(resolve, reject) {
  * @return {Promise}
  */
 function promiseCallback(callback) {
-  let _callbackType = _flowRuntime2.default.function();
-
-  const _returnType = _flowRuntime2.default.return(_flowRuntime2.default.ref('Promise'));
-
-  _flowRuntime2.default.param('callback', _callbackType).assert(callback);
-
-  return _returnType.assert(new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
     callback(resolveFromCallback(resolve, reject));
-  }));
+  });
 }
 //# sourceMappingURL=index.js.map

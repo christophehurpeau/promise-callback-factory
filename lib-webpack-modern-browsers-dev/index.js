@@ -1,4 +1,4 @@
-import _t from 'tcomb-forked';
+import t from 'flow-runtime';
 
 /**
  * Creates a callback that resolve or reject a promise
@@ -37,24 +37,14 @@ export function resolveFromCallback(resolve, reject) {
  * @return {Promise}
  */
 export default function promiseCallback(callback) {
-  _assert(callback, _t.Function, 'callback');
+  let _callbackType = t.function();
 
-  return _assert(function () {
-    return new Promise(function (resolve, reject) {
-      callback(resolveFromCallback(resolve, reject));
-    });
-  }.apply(this, arguments), _t.Promise, 'return value');
-}
+  const _returnType = t.return(t.ref('Promise'));
 
-function _assert(x, type, name) {
-  if (_t.isType(type) && type.meta.kind !== 'struct') {
-    if (!type.is(x)) {
-      type(x, [name + ': ' + _t.getTypeName(type)]);
-    }
-  } else if (!(x instanceof type)) {
-    _t.fail('Invalid value ' + _t.stringify(x) + ' supplied to ' + name + ' (expected a ' + _t.getTypeName(type) + ')');
-  }
+  t.param('callback', _callbackType).assert(callback);
 
-  return x;
+  return _returnType.assert(new Promise(function (resolve, reject) {
+    callback(resolveFromCallback(resolve, reject));
+  }));
 }
 //# sourceMappingURL=index.js.map
