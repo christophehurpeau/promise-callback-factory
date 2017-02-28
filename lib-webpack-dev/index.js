@@ -39,7 +39,7 @@ export function resolveFromCallback(resolve, reject) {
 export default function promiseCallback(callback) {
   var _callbackType = t.function();
 
-  var _returnType = t.return(t.ref('Promise'));
+  var _returnType = t.return(t.ref('Promise', t.any()));
 
   t.param('callback', _callbackType).assert(callback);
 

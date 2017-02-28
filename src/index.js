@@ -35,7 +35,7 @@ export function resolveFromCallback(resolve, reject) {
  * @param {Function} callback callback((done) => {})
  * @return {Promise}
  */
-export default function promiseCallback(callback: Function): Promise {
+export default function promiseCallback(callback: Function): Promise<any> {
   return new Promise((resolve, reject) => {
     callback(resolveFromCallback(resolve, reject));
   });

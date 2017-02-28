@@ -51,7 +51,7 @@ function resolveFromCallback(resolve, reject) {
 function promiseCallback(callback) {
   let _callbackType = _flowRuntime2.default.function();
 
-  const _returnType = _flowRuntime2.default.return(_flowRuntime2.default.ref('Promise'));
+  const _returnType = _flowRuntime2.default.return(_flowRuntime2.default.ref('Promise', _flowRuntime2.default.any()));
 
   _flowRuntime2.default.param('callback', _callbackType).assert(callback);
 
