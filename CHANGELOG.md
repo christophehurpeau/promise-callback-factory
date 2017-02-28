@@ -1,3 +1,12 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/christophehurpeau/promise-callback-factory/compare/v1.1.0...v1.2.0) (2017-02-28)
+
+
+### Features
+
+* pob upgrade ([82847c4](https://github.com/christophehurpeau/promise-callback-factory/commit/82847c4))
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/christophehurpeau/promise-callback-factory/compare/v1.0.0...v1.1.0) (2017-01-24)
 
