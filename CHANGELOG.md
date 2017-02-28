@@ -1,3 +1,12 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/christophehurpeau/promise-callback-factory/compare/v1.2.0...v1.2.1) (2017-02-28)
+
+
+### Bug Fixes
+
+* missing Promise parameter ([1bf9871](https://github.com/christophehurpeau/promise-callback-factory/commit/1bf9871))
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/christophehurpeau/promise-callback-factory/compare/v1.1.0...v1.2.0) (2017-02-28)
 
