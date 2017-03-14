@@ -1,5 +1,7 @@
 # promise-callback-factory [![NPM version][npm-image]][npm-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/christophehurpeau/promise-callback-factory.svg)](https://greenkeeper.io/)
+
 create promise with node-style callback
 
 [![Dependency ci Status][dependencyci-image]][dependencyci-url]
