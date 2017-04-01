@@ -51,12 +51,14 @@ function resolveFromCallback(resolve, reject) {
 function promiseCallback(callback) {
   var _callbackType = _flowRuntime2.default.function();
 
-  var _returnType = _flowRuntime2.default.return(_flowRuntime2.default.ref('Promise', _flowRuntime2.default.any()));
+  var _returnType = _flowRuntime2.default.return(_flowRuntime2.default.any());
 
   _flowRuntime2.default.param('callback', _callbackType).assert(callback);
 
-  return _returnType.assert(new Promise(function (resolve, reject) {
+  return new Promise(function (resolve, reject) {
     callback(resolveFromCallback(resolve, reject));
-  }));
+  }).then(function (_arg) {
+    return _returnType.assert(_arg);
+  });
 }
 //# sourceMappingURL=index.js.map

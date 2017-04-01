@@ -39,12 +39,12 @@ export function resolveFromCallback(resolve, reject) {
 export default function promiseCallback(callback) {
   let _callbackType = t.function();
 
-  const _returnType = t.return(t.ref('Promise', t.any()));
+  const _returnType = t.return(t.any());
 
   t.param('callback', _callbackType).assert(callback);
 
-  return _returnType.assert(new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     callback(resolveFromCallback(resolve, reject));
-  }));
+  }).then(_arg => _returnType.assert(_arg));
 }
 //# sourceMappingURL=index.js.map
