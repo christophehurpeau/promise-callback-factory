@@ -1,9 +1,18 @@
-# promise-callback-factory [![NPM version][npm-image]][npm-url]
+<h3 align="center">
+  promise-callback-factory
+</h3>
 
-create promise with node-style callback
+<p align="center">
+  create promise with node-style callback
+</p>
 
-[![Dependency ci Status][dependencyci-image]][dependencyci-url]
-[![Dependency Status][daviddm-image]][daviddm-url]
+<p align="center">
+  <a href="https://npmjs.org/package/promise-callback-factory"><img src="https://img.shields.io/npm/v/promise-callback-factory.svg?style=flat-square"></a>
+  <a href="https://circleci.com/gh/christophehurpeau/promise-callback-factory"><img src="https://img.shields.io/circleci/project/christophehurpeau/promise-callback-factory/master.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/promise-callback-factory"><img src="https://david-dm.org/christophehurpeau/promise-callback-factory.svg?style=flat-square"></a>
+  <a href="https://dependencyci.com/github/christophehurpeau/promise-callback-factory"><img src="https://dependencyci.com/github/christophehurpeau/promise-callback-factory/badge?style=flat-square"></a>
+  <a href="https://codecov.io/gh/christophehurpeau/promise-callback-factory"><img src="https://img.shields.io/codecov/c/github/christophehurpeau/promise-callback-factory/master.svg?style=flat-square"></a>
+</p>
 
 ## Install
 
@@ -21,10 +30,3 @@ promiseCallback(done => fs.readFile('./myFile.txt', done))
     console.log(txtContentBuffer.toString());
   });
 ```
-
-[npm-image]: https://img.shields.io/npm/v/promise-callback-factory.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/promise-callback-factory
-[daviddm-image]: https://david-dm.org/christophehurpeau/promise-callback-factory.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/promise-callback-factory
-[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/promise-callback-factory/badge?style=flat-square
-[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/promise-callback-factory

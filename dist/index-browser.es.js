@@ -1,11 +1,3 @@
-/* eslint-disable flowtype/no-weak-types */
-
-type Resolve = (result: any) => void;
-type Reject = (result: any) => void;
-
-type NodeStyleCallback = (err: any, result: any) => any;
-type PromiseCallbackCallback = (done: NodeStyleCallback) => any;
-
 /**
  * Creates a callback that resolve or reject a promise
  * according to the default callback convention in node: (err, result)
@@ -14,8 +6,10 @@ type PromiseCallbackCallback = (done: NodeStyleCallback) => any;
  * @param {Function} reject reject function of the promise
  * @return {Function}
  */
-export function resolveFromCallback(resolve: Resolve, reject: Reject): NodeStyleCallback {
-  return (err: any, result: any) => {
+/* eslint-disable flowtype/no-weak-types */
+
+function resolveFromCallback(resolve, reject) {
+  return function (err, result) {
     if (err) {
       if (typeof err === 'string') {
         err = new Error(err);
@@ -43,8 +37,12 @@ export function resolveFromCallback(resolve: Resolve, reject: Reject): NodeStyle
  * @param {Function} callback callback((done) => {})
  * @return {Promise}
  */
-export default function promiseCallback(callback: PromiseCallbackCallback): Promise<any> {
-  return new Promise((resolve: Resolve, reject: Reject) => {
+function promiseCallback(callback) {
+  return new Promise(function (resolve, reject) {
     callback(resolveFromCallback(resolve, reject));
   });
 }
+
+export default promiseCallback;
+export { resolveFromCallback };
+//# sourceMappingURL=index-browser.es.js.map
