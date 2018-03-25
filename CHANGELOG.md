@@ -1,3 +1,9 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/christophehurpeau/promise-callback-factory/compare/v1.4.0...v2.0.0) (2018-03-25)
+
+deprecate
+
+
 <a name="1.4.0"></a>
 # [1.4.0](https://github.com/christophehurpeau/promise-callback-factory/compare/v1.3.0...v1.4.0) (2017-04-01)
 
